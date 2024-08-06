@@ -1,1 +1,31 @@
+# construct me a workflow that will listen on push events
+# then make a job that will run on ubuntu-latest and echo hello world
+# then make a another job that useses the first job and wait it and then echo hello dependant job
+# then make a another job that run independently and echo hello independent job
 
+
+name: Simple workflow following learning git from orielly
+
+on: 
+    [push]
+
+jobs:
+    job-1:
+        name: job 1    
+        runs-on: ubuntu-latest
+        steps: 
+            - name: echoe hello world step
+              run: echo "hello world"
+    job-2:
+        name: job 2
+        needs: job-1
+        runs-on: windows-latest
+        steps: 
+            - name: echo hello from windows 2 
+              run: echo ipconfig
+    job-3:
+        name: job 3    
+        runs-on: ubuntu-latest
+        steps: 
+            - name: echoe hello world step 3
+              run: echo "hello world"
