@@ -29,3 +29,10 @@ jobs:
         steps: 
             - name: echoe hello world step 3
               run: echo "hello world"
+    job-4:
+        name: job 4    
+        runs-on: ubuntu-latest
+        needs: [job-1, job-3]
+        steps: 
+            - name: echoe hello world step 4
+              run: echo "hello world"
